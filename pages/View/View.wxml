@@ -1,0 +1,138 @@
+<!--pages/View/View.wxml-->
+
+  <h1 class="title">课程表</h1>
+
+<scroll-view class="table" scroll-x="true" >
+  <view class="tr bg-w">
+    <view class="th"></view>
+    <view class="th">Mon</view>
+    <view class="th">Tue</view>
+    <view class="th ">Wed</view>
+    <view class="th ">Thur</view>
+    <view class="th ">Fri</view>
+    <view class="th ">Sat</view>
+    <view class="th ">Sun</view>
+  </view>
+    <view  bindlongtap="longTap" bindtouchstart="touchStart" bindtouchend="touchEnd" >
+  <block wx:for="{{listData}}" wx:key="{{code}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0 && index != 4 && index !=11 }}">
+      <view class="tt">{{item.time}}</view>
+     
+      <text class="txt" id="mon_{{index}}" wx:if="{{timetable[0].timetable['mon_'+index]}}">{{timetable[0].timetable["mon_"+index]}} </text>
+      <text class="txt" id="mon_{{index}}" wx:else> 休息 </text>
+
+       <text class="txt" id="tue_{{index}}" wx:if="{{timetable[0].timetable['tue_'+index]}}">{{timetable[0].timetable["tue_"+index]}} </text>
+      <text class="txt" id="tue_{{index}}" wx:else> 休息 </text>
+
+      <text class="txt" id="wed_{{index}}" wx:if="{{timetable[0].timetable['wed_'+index]}}">{{timetable[0].timetable["wed_"+index]}} </text>
+      <text class="txt" id="wed_{{index}}" wx:else> 休息 </text>
+
+      <text class="txt" id="thur_{{index}}" wx:if="{{timetable[0].timetable['thur_'+index]}}">{{timetable[0].timetable["thur_"+index]}} </text>
+      <text class="txt" id="thur_{{index}}" wx:else> 休息 </text>
+
+     <text class="txt" id="fri_{{index}}" wx:if="{{timetable[0].timetable['fri_'+index]}}">{{timetable[0].timetable["fri_"+index]}} </text>
+      <text class="txt" id="fri_{{index}}" wx:else> 休息 </text>
+
+   <text class="txt" id="sat_{{index}}" wx:if="{{timetable[0].timetable['sat_'+index]}}">{{timetable[0].timetable["sat_"+index]}} </text>
+      <text class="txt" id="sat_{{index}}" wx:else> 休息 </text>
+   
+    <text class="txt" id="sun_{{index}}" wx:if="{{timetable[0].timetable['sun_'+index]}}">{{timetable[0].timetable["sun_"+index]}} </text>
+      <text class="txt" id="sun_{{index}}" wx:else> 休息 </text>
+    </view>
+     <view class="tr" wx:elif="{{index == 4}}">
+      <view class="break">下午</view>
+     </view>
+     <view class="tr" wx:elif="{{index == 11}}">
+      <view class="break">晚上</view>
+     </view>
+
+    <view class="tr" wx:else>
+      <view class="tt">{{item.time}}</view>
+            <text class="txt" id="mon_{{index}}" wx:if="{{timetable[0].timetable['mon_'+index]}}">{{timetable[0].timetable["mon_"+index]}} </text>
+      <text class="txt" id="mon_{{index}}" wx:else> 休息 </text>
+
+       <text class="txt" id="tue_{{index}}" wx:if="{{timetable[0].timetable['tue_'+index]}}">{{timetable[0].timetable["tue_"+index]}} </text>
+      <text class="txt" id="tue_{{index}}" wx:else> 休息 </text>
+
+      <text class="txt" id="wed_{{index}}" wx:if="{{timetable[0].timetable['wed_'+index]}}">{{timetable[0].timetable["wed_"+index]}} </text>
+      <text class="txt" id="wed_{{index}}" wx:else> 休息 </text>
+
+      <text class="txt" id="thur_{{index}}" wx:if="{{timetable[0].timetable['thur_'+index]}}">{{timetable[0].timetable["thur_"+index]}} </text>
+      <text class="txt" id="thur_{{index}}" wx:else> 休息 </text>
+
+     <text class="txt" id="fri_{{index}}" wx:if="{{timetable[0].timetable['fri_'+index]}}">{{timetable[0].timetable["fri_"+index]}} </text>
+      <text class="txt" id="fri_{{index}}" wx:else> 休息 </text>
+
+   <text class="txt" id="sat_{{index}}" wx:if="{{timetable[0].timetable['sat_'+index]}}">{{timetable[0].timetable["sat_"+index]}} </text>
+      <text class="txt" id="sat_{{index}}" wx:else> 休息 </text>
+   
+    <text class="txt" id="sun_{{index}}" wx:if="{{timetable[0].timetable['sun_'+index]}}">{{timetable[0].timetable["sun_"+index]}} </text>
+      <text class="txt" id="sun_{{index}}" wx:else> 休息 </text>
+    </view>
+  </block>
+    </view>
+  </scroll-view>
+  <view class="table" style='display:none'>
+    <block wx:for="{{listData}}" wx:key="{{code}}">
+      <view class="tr bg-g" wx:if="{{index % 2 == 0 && index != 4 && index !=11 }}">
+      <view class="tt">{{item.time}}</view>
+     
+      <input class="input" id="mon_{{index}}" wx:if="{{timetable[0].timetable['mon_'+index]}}" placeholder="{{timetable[0].timetable['mon_'+index]}}" > </input>
+      <input class="input" id="mon_{{index}}" wx:else placeholder="课程">  </input>
+
+       <input class="input" id="tue_{{index}}" wx:if="{{timetable[0].timetable['tue_'+index]}}" placeholder="{{timetable[0].timetable['tue_'+index]}}"> </input>
+      <input class="input" id="tue_{{index}}" wx:else placeholder='课程'></input>
+
+      <input class="input" id="wed_{{index}}" wx:if="{{timetable[0].timetable['wed_'+index]}}" placeholder="{{timetable[0].timetable['wed_'+index]}}"> </input>
+      <input class="input" id="wed_{{index}}" wx:else placeholder='课程'> </input>
+
+      <input class="input" id="thur_{{index}}" wx:if="{{timetable[0].timetable['thur_'+index]}}" placeholder="{{timetable[0].timetable['thur_'+index]}}"> </input>
+      <input class="input" id="thur_{{index}}" wx:else placeholder='课程'>  </input>
+
+     <input class="input" id="fri_{{index}}" wx:if="{{timetable[0].timetable['fri_'+index]}}" placeholder="{{timetable[0].timetable['fri_'+index]}}"> </input>
+      <input class="input" id="fri_{{index}}" wx:else placeholder='课程'> </input>
+
+   <input class="input" id="sat_{{index}}" wx:if="{{timetable[0].timetable['sat_'+index]}}" placeholder="{{timetable[0].timetable['sat_'+index]}}"> </input>
+      <input class="input" id="sat_{{index}}" wx:else placeholder='课程'>  </input>
+   
+    <input class="input" id="sun_{{index}}" wx:if="{{timetable[0].timetable['sun_'+index]}}" placeholder="{{timetable[0].timetable['sun_'+index]}}"> </input>
+      <input class="input" id="sun_{{index}}" wx:else placeholder='课程'> </input>
+    </view>
+     <view class="tr" wx:elif="{{index == 4}}">
+      <view class="break">下午</view>
+     </view>
+     <view class="tr" wx:elif="{{index == 11}}">
+      <view class="break">晚上</view>
+     </view>
+
+    <view class="tr" wx:else>
+      <view class="tt">{{item.time}}</view>
+             <input class="input" id="mon_{{index}}" wx:if="{{timetable[0].timetable['mon_'+index]}}" placeholder="{{timetable[0].timetable['mon_'+index]}}" > </input>
+      <input class="input" id="mon_{{index}}" wx:else placeholder="课程">  </input>
+
+       <input class="input" id="tue_{{index}}" wx:if="{{timetable[0].timetable['tue_'+index]}}" placeholder="{{timetable[0].timetable['tue_'+index]}}"> </input>
+      <input class="input" id="tue_{{index}}" wx:else placeholder='课程'></input>
+
+      <input class="input" id="wed_{{index}}" wx:if="{{timetable[0].timetable['wed_'+index]}}" placeholder="{{timetable[0].timetable['wed_'+index]}}"> </input>
+      <input class="input" id="wed_{{index}}" wx:else placeholder='课程'> </input>
+
+      <input class="input" id="thur_{{index}}" wx:if="{{timetable[0].timetable['thur_'+index]}}" placeholder="{{timetable[0].timetable['thur_'+index]}}"> </input>
+      <input class="input" id="thur_{{index}}" wx:else placeholder='课程'>  </input>
+
+     <input class="input" id="fri_{{index}}" wx:if="{{timetable[0].timetable['fri_'+index]}}" placeholder="{{timetable[0].timetable['fri_'+index]}}"> </input>
+      <input class="input" id="fri_{{index}}" wx:else placeholder='课程'> </input>
+
+   <input class="input" id="sat_{{index}}" wx:if="{{timetable[0].timetable['sat_'+index]}}" placeholder="{{timetable[0].timetable['sat_'+index]}}"> </input>
+      <input class="input" id="sat_{{index}}" wx:else placeholder='课程'> </input>
+   
+    <input class="input" id="sun_{{index}}" wx:if="{{timetable[0].timetable['sun_'+index]}}" placeholder="{{timetable[0].timetable['sun_'+index]}}"> </input>
+      <input class="input" id="sun_{{index}}" wx:else placeholder='课程'> </input>
+    </view>
+    </block>
+  </view>
+  <view class='container'>
+    <button class="button" bindtouchstart='activate'>修改</button>
+    <button class="button" bindtouchstart='unlock' style='display:none' >保存修改</button>
+    <button class="button" bindtouchstart='back'>回到主页</button>
+  </view>
+

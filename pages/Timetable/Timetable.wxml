@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class="container">
+  <h1>Welcombe to my timetable</h1>
+  <view class="section">
+  <picker mode="date" value="{{date}}" start="{{startDate}}"   bindchange="bindDateChange">
+    <view class="picker">
+      选择起始日期: {{date}}
+    </view>
+  </picker>
+   <picker mode="date" value="{{date2}}" start="{{startDate}}"   bindchange="bindEnDateChange">
+    <view class="picker">
+      选择结束日期: {{date2}}
+    </view>
+  </picker>
+</view>
+  <button bindtouchstart='enter'>确认</button>
+</view>
